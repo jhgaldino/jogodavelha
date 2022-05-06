@@ -6,6 +6,7 @@ namespace jogodavelha
 
         private void button10_Click(object sender, EventArgs e)
         {
+            //limpar campos
             button1.Text = "";
             button2.Text = "";
             button3.Text = "";
@@ -15,6 +16,8 @@ namespace jogodavelha
             button7.Text = "";
             button8.Text = "";
             button9.Text = "";
+
+            //nova rodada, começar um novo jogo
             rodadas = 0;
             jogo_final = false;
             for (int i = 0; i < 9; i++)
@@ -34,10 +37,12 @@ namespace jogodavelha
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //configurando os botões
             Button button1 = (Button)sender;
             int buttonIndex = button1.TabIndex;
             if (button1.Text == "" && jogo_final == false)
             {
+                //checar de qual o jogador é a rodada existente
                 if (turn)
                 {
                     button1.Text = "X";
@@ -59,6 +64,7 @@ namespace jogodavelha
 
         void Vencedor(int PlayerWin)
         {
+            // adicionar pontos ao vencedor da rodada
             jogo_final = true;
             if(PlayerWin == 1)
             {
@@ -78,6 +84,7 @@ namespace jogodavelha
 
         void Checagem(int ChecarPlayer)
         {
+            
             string suporte = "";
             if (ChecarPlayer == 1)
             {
@@ -87,33 +94,34 @@ namespace jogodavelha
             {
                 suporte = "O";
             }
+            //checagem de vitória horizontal
             for (int horizontal = 0; horizontal < 8; horizontal += 3)
             {
                 if (suporte == texto[horizontal])
                 {
-                    // checagem horizontal
+                    
                     if (texto[horizontal] == texto[horizontal + 1] && texto[horizontal] == texto[horizontal + 2])
                     {
                         Vencedor(ChecarPlayer);
                         return;
                     }
                 }
-            } // final do loop horizontal
-            // checagem vertical
+            } 
+            // checagem de vitória vertical
             for (int vertical = 0; vertical < 3; vertical ++)
             {
                 if (suporte == texto[vertical])
                 {
-                    // checagem horizontal
+                    
                     if (texto[vertical] == texto[vertical + 3] && texto[vertical] == texto[vertical + 6])
                     {
                         Vencedor(ChecarPlayer);
                         return;
                     }
                 }
-            } // final do loop vertical
+            } 
 
-            // loop diagonal
+            // checagem de vitória diagonal
             if (texto[0] == suporte)
             if (texto[0] == texto[4] && texto[0] == texto[8])
             {
