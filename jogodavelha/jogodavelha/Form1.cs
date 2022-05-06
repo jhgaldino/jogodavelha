@@ -42,7 +42,7 @@ namespace jogodavelha
             int buttonIndex = button1.TabIndex;
             if (button1.Text == "" && jogo_final == false)
             {
-                //checar de qual o jogador é a rodada existente
+                //checar de qual o jogador da rodada
                 if (turn)
                 {
                     button1.Text = "X";
@@ -64,7 +64,7 @@ namespace jogodavelha
 
         void Vencedor(int PlayerWin)
         {
-            // adicionar pontos ao vencedor da rodada
+            // adicionar pontos ao vencedor da rodada ou ao numero de empates
             jogo_final = true;
             if(PlayerWin == 1)
             {
